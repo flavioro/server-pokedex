@@ -7,15 +7,11 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev": "ts-node-dev -r tsconfig-paths/register --trace-warnings --inspect --ignore-watch node_modules src/shared/infra/http/server.ts",
     "start": "ts-node src/shared/infra/http/server.ts",
-    "test": "jest --detectOpenHandles"
+    "test": "jest"
   },
   "type": "module",
   "dependencies": {
     "@socketlabs/email": "^1.1.0",
-    "@types/cors": "^2.8.10",
-    "@types/es6-promise": "^3.3.0",
-    "@types/express": "^4.17.11",
-    "@types/node": "^14.14.37",
     "bcryptjs": "^2.4.3",
     "celebrate": "^14.0.0",
     "class-transformer": "^0.4.0",
@@ -44,9 +40,17 @@
     "@babel/plugin-proposal-decorators": "^7.13.5",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-typescript": "^7.13.0",
+    "@types/cors": "^2.8.10",
+    "@types/es6-promise": "^3.3.0",
+    "@types/express": "^4.17.11",
+    "@types/node": "^14.14.37",
+    "@types/jest": "^26.0.22",
     "@types/jsonwebtoken": "^8.5.1",
+    "babel-jest": "^26.6.3",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.2",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
     "ts-node-dev": "^1.1.6",
     "tsconfig-paths": "^3.9.0"
   }

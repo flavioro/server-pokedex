@@ -1,10 +1,8 @@
-import AppError from '../../../../../shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import UpdateProfileService from './UpdateProfileService';
-
-import EnumTipoCadastro from '../../../@types/enumCadastro';
 
 let fakeUsersRepository: FakeUsersRepository;
 let fakeHashProvider: FakeHashProvider;
@@ -120,35 +118,5 @@ describe('UpdateProfile', () => {
         password: '123123',
       }),
     ).rejects.toBeInstanceOf(AppError);
-  });
-
-  it('should be able update the tipo_cadastro', async () => {
-    // const user = await fakeUsersRepository.create({
-    //   name: 'John Doe',
-    //   email: 'johndoe@example.com',
-    //   password: '123456',
-    // });
-
-    // const updateUser = await updateProfile.execute({
-    //   user_id: user.id,
-    //   name: 'John Trê',
-    //   email: 'johntre@example.com',
-    //   tipo_cadastro: EnumTipoCadastro.Arquiteto,
-    // });
-
-    // expect(updateUser.tipo_cadastro).toBe(EnumTipoCadastro.Arquiteto);
-
-    // Cliente,
-    // Funcionario,
-    // Blog,
-    // Arquiteto,
-    // Engenheiro,
-    // Construtor,
-
-    const tipo: string = EnumTipoCadastro.Arquiteto;
-    expect(tipo).toBe('Arquiteto');
-
-    const tipoNumber: EnumTipoCadastro = EnumTipoCadastro.Arquiteto;
-    expect(tipoNumber).toBe(3);
   });
 });
