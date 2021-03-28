@@ -27,14 +27,7 @@ class EmailRepository implements IEmailRepository {
     return email;
   }
 
-  public async findByIdPessoa(pessoa_id: string): Promise<Email | undefined> {
-    const email = await this.ormRepository.findOne(pessoa_id);
-
-    return email;
-  }
-
   public async create({
-    pessoa_id,
     subject,
     message_text,
     message_html,
@@ -43,7 +36,6 @@ class EmailRepository implements IEmailRepository {
     email_send,
   }: ICreateEmailDTO): Promise<Email> {
     const email = this.ormRepository.create({
-      pessoa_id,
       subject,
       message_text,
       message_html,
