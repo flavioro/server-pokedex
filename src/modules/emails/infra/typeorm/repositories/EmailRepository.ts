@@ -1,16 +1,16 @@
 /* eslint-disable camelcase */
-import { getRepository, Repository } from 'typeorm';
+import { getMongoRepository, MongoRepository } from 'typeorm';
 
 import IEmailRepository from '../../../../../modules/emails/repositories/IEmailRepository';
 import ICreateEmailDTO from '../../../../../modules/emails/dtos/ICreateEmailDTO';
 
-import Email from '../entities/Email';
+import Email from '../schemas/Email';
 
 class EmailRepository implements IEmailRepository {
-  private ormRepository: Repository<Email>;
+  private ormRepository: MongoRepository<Email>;
 
   constructor() {
-    this.ormRepository = getRepository(Email);
+    this.ormRepository = getMongoRepository(Email);
   }
 
   public async findBySubject(subject: string): Promise<Email | undefined> {

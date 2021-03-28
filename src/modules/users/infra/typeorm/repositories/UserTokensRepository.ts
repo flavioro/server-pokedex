@@ -1,14 +1,14 @@
-import { getRepository, Repository } from 'typeorm';
+import { getMongoRepository, MongoRepository } from 'typeorm';
 
 import IUserTokensRepository from '../../../../../modules/users/repositories/IUserTokensRepository';
 
-import UserToken from '../entities/UserToken';
+import UserToken from '../schemas/UserToken';
 
 class UserTokensRepository implements IUserTokensRepository {
-  private ormRepository: Repository<UserToken>;
+  private ormRepository: MongoRepository<UserToken>;
 
   constructor() {
-    this.ormRepository = getRepository(UserToken);
+    this.ormRepository = getMongoRepository(UserToken);
   }
 
   public async findByToken(token: string): Promise<UserToken | undefined> {

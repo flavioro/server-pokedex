@@ -10,6 +10,7 @@ import express, { Response, Request, NextFunction } from 'express';
 import AppError from '../../errors/AppError';
 import routes from './routes';
 
+import '../../../shared/infra/typeorm';
 import '../../../shared/container';
 
 config()

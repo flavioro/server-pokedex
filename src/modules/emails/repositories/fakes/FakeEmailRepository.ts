@@ -3,7 +3,7 @@ import { uuid } from 'uuidv4';
 import IEmailRepository from '../../../../modules/emails/repositories/IEmailRepository';
 import ICreateEmailDTO from '../../../../modules/emails/dtos/ICreateEmailDTO';
 
-import Email from '../../infra/typeorm/entities/Email';
+import Email from '../../infra/typeorm/schemas/Email';
 
 class SiteContatoRepository implements IEmailRepository {
   private Emails: Email[] = [];

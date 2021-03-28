@@ -1,15 +1,15 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
   Generated,
+  ObjectIdColumn,
 } from 'typeorm';
 
 @Entity('user_tokens')
 class UserToken {
-  @PrimaryGeneratedColumn('uuid')
+  @ObjectIdColumn()
   id: string;
 
   @Column()

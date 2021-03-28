@@ -1,11 +1,13 @@
 [
   {
-    "name": "mongo",
+    "name": "default",
     "type": "mongodb",
     "host": "localhost",
     "port": 27017,
     "database": "pokedex",
     "useUnifiedTopology": true,
+    "synchronize": true,
+    "logging": true,
     "entities": ["./src/modules/**/infra/typeorm/schemas/*.ts"]
   }
 ]

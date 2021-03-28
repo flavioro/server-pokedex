@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { inject, injectable } from 'tsyringe';
 
-import Email from '../infra/typeorm/entities/Email';
+import Email from '../infra/typeorm/schemas/Email';
 import IEmailRepository from '../repositories/IEmailRepository';
 
 interface IRequest {

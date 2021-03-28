@@ -2,7 +2,7 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
+  ObjectIdColumn,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -11,7 +11,7 @@ import { Exclude, Expose } from 'class-transformer';
 
 @Entity('users')
 class User {
-  @PrimaryGeneratedColumn('uuid')
+  @ObjectIdColumn()
   id: string;
 
   @Column()
