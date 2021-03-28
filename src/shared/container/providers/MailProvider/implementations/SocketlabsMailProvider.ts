@@ -1,4 +1,4 @@
-import { SocketLabsClient } from '../../../../../socketlabs/email';
+import { SocketLabsClient } from '@socketlabs/email';
 import { injectable, inject } from 'tsyringe';
 
 import IMailTemplateProvider from '../../../../../shared/container/providers/MailTemplateProvider/models/IMailTemplateProvider';
@@ -28,11 +28,10 @@ export default class SocketlabsMailProvider implements IMailProvider {
     const html = await this.MailTemplateProvider.parse(templateData);
     let message = await this.client.send({
       to: to.email,
-      from: from?.email || 'naoresponder@archshop.com.br',
+      from: from?.email || 'naoresponder@gmail.com',
       subject,
       htmlBody: html,
 
-      // textBody: "This message was sent using the SocketLabs Node.js library!",
       messageType: 'basic',
     });
     message = { ...message, html };

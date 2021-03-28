@@ -1,11 +1,10 @@
 import { injectable, inject } from 'tsyringe';
 
-import AppError from '../../../../../shared/errors/AppError';
+import AppError from '../../../shared/errors/AppError';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 import IUsersRepository from '../repositories/IUsersRepository';
 
 import User from '../infra/typeorm/entities/User';
-import TipoCadastroEnum from '../../../@types/enumCadastro';
 
 interface IRequest {
   user_id: string;
@@ -13,7 +12,6 @@ interface IRequest {
   email: string;
   old_password?: string;
   password?: string;
-  tipo_cadastro?: TipoCadastroEnum;
 }
 
 @injectable()
@@ -26,7 +24,7 @@ class UpdateProfileService {
     private hashProvider: IHashProvider,
   ) {}
 
-  public async execute({ user_id, name, email, password, old_password, tipo_cadastro }: IRequest): Promise<User> {
+  public async execute({ user_id, name, email, password, old_password }: IRequest): Promise<User> {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
@@ -60,11 +58,6 @@ class UpdateProfileService {
 
       user.password = await this.hashProvider.generateHash(password);
     }
-
-    // if (tipo_cadastro) {
-    //   const nn = (TipoCadastroEnum[tipo_cadastro] as string) as TipoCadastroEnum;
-    //   user.tipo_cadastro = nn as TipoCadastroEnum;
-    // }
 
     return this.usersRepository.save(user);
   }

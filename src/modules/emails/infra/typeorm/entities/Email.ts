@@ -5,23 +5,12 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  JoinColumn,
-  ManyToOne,
 } from 'typeorm';
-
-import Pessoa from '../../../../../modules/pessoas/infra/typeorm/entities/Pessoa';
 
 @Entity()
 class Email {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  pessoa_id: string;
-
-  @ManyToOne(() => Pessoa, pessoa => pessoa.emails)
-  @JoinColumn({ name: 'pessoa_id' })
-  pessoa: Pessoa;
 
   @Column()
   subject: string;

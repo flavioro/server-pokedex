@@ -40,7 +40,6 @@ class EmailRepository implements IEmailRepository {
     message_html,
     email_from,
     email_to,
-    attachments,
     email_send,
   }: ICreateEmailDTO): Promise<Email> {
     const email = this.ormRepository.create({
@@ -50,7 +49,6 @@ class EmailRepository implements IEmailRepository {
       message_html,
       email_from,
       email_to,
-      attachments,
       email_send,
     });
 

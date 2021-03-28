@@ -5,11 +5,13 @@ import { classToClass } from 'class-transformer';
 import UpdateProfileService from '../../../../../modules/users/services/UpdateProfileService';
 import ShowProfileService from '../../../../../modules/users/services/ShowProfileService';
 
-declare namespace Express {
-  export interface Request {
-    user: {
-      id: string;
-    };
+declare global {
+  namespace Express {
+    export interface Request{
+      user: {
+        id: string
+      }
+    }
   }
 }
 
