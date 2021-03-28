@@ -33,9 +33,6 @@ class User {
   @Column()
   phone: string;
 
-  @Column()
-  tipo_cadastro: string;
-
   @CreateDateColumn()
   created_at: Date;
 

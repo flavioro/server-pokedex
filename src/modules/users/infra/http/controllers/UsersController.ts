@@ -14,7 +14,6 @@ export default class UsersController {
       name,
       email,
       password,
-      tipo_cadastro,
     });
 
     return response.json(classToClass(user));

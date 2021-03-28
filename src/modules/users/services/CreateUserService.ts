@@ -7,10 +7,9 @@ import IUsersRepository from '../repositories/IUsersRepository';
 import IHashProvider from '../providers/HashProvider/models/IHashProvider';
 
 interface IRequest {
-  name?: string;
+  name: string;
   email: string;
-  password?: string;
-  tipo_cadastro?: string;
+  password: string;
 }
 
 @injectable()
@@ -27,14 +26,12 @@ class CreateUserService {
     name,
     email,
     password,
-    tipo_cadastro,
   }: IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (
       checkUserExists &&
       checkUserExists.name === name &&
-      checkUserExists.tipo_cadastro === tipo_cadastro &&
       typeof password === 'undefined'
     ) {
       return checkUserExists;
@@ -50,19 +47,10 @@ class CreateUserService {
       user.password = await this.hashProvider.generateHash(password);
     }
 
-    if (!tipo_cadastro) {
-      throw new AppError(
-        'Inform type of registration (Funcionário, Cliente, Inscrito).',
-      );
-    } else {
-      user.tipo_cadastro = tipo_cadastro;
-    }
-
     const userCreate = this.usersRepository.create({
       name,
       email,
       password: user.password,
-      tipo_cadastro: user.tipo_cadastro,
     });
 
     return userCreate;

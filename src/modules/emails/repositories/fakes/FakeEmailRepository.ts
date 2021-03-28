@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { uuid } from 'uuidv4';
-import IEmailRepository from '../../../../../modules/emails/repositories/IEmailRepository';
-import ICreateEmailDTO from '../../../../../modules/emails/dtos/ICreateEmailDTO';
+import IEmailRepository from '../../../../modules/emails/repositories/IEmailRepository';
+import ICreateEmailDTO from '../../../../modules/emails/dtos/ICreateEmailDTO';
 
 import Email from '../../infra/typeorm/entities/Email';
 
@@ -16,12 +16,6 @@ class SiteContatoRepository implements IEmailRepository {
 
   public async findByEmailTo(emailTo: string): Promise<Email | undefined> {
     const findEmail = this.Emails.find(email => email.email_to === emailTo);
-
-    return findEmail;
-  }
-
-  public async findByIdPessoa(pessoa_id: string): Promise<Email | undefined> {
-    const findEmail = this.Emails.find(email => email.pessoa_id === pessoa_id);
 
     return findEmail;
   }

@@ -44,7 +44,7 @@ class SendForgotPasswordEmailService {
         name: user.name,
         email: user.email,
       },
-      subject: '[ArchShop] Recuperação de senha',
+      subject: '[Desafio] Recuperação de senha',
       templateData: {
         file: forgotPasswordTemplate,
         variables: {

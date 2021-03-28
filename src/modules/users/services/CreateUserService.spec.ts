@@ -15,22 +15,11 @@ describe('CreateUser', () => {
     createUser = new CreateUserService(fakeUsersRepository, fakeHashProvider);
   })
 
-  it('should be able to create a new user only with email and tipo_cadastro', async () => {
-    const user = await createUser.execute({
-      email: 'johndoe@example.com',
-      tipo_cadastro: 'Inscrito',
-    });
-
-    expect(user).toHaveProperty('id');
-    expect(user).toHaveProperty('tipo_cadastro');
-  });
-
   it('should be able to create a new user', async () => {
     const user = await createUser.execute({
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '1234',
-      tipo_cadastro: 'Cliente',
     });
 
     expect(user).toHaveProperty('id');
@@ -41,39 +30,8 @@ describe('CreateUser', () => {
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '1234',
-      tipo_cadastro: 'Cliente',
     });
 
-    await expect(
-      createUser.execute({
-        name: 'John Doe',
-        email: 'johndoe@example.com',
-        password: '1234',
-        tipo_cadastro: 'Cliente',
-      }),
-    ).rejects.toBeInstanceOf(AppError);
-  });
-
-  it('should be able to return user exists with same (email, name, tipo_cadastro) without password', async () => {
-    await createUser.execute({
-      name: 'John Doe',
-      email: 'johndoe@example.com',
-      tipo_cadastro: 'Cliente',
-    });
-
-    const userExists = await createUser.execute({
-      name: 'John Doe',
-      email: 'johndoe@example.com',
-      tipo_cadastro: 'Cliente',
-    });
-
-    expect(userExists.name).toBe('John Doe');
-    expect(userExists.email).toBe('johndoe@example.com');
-    expect(userExists.tipo_cadastro).toBe('Cliente');
-    expect(userExists.password).toBeUndefined();
-  });
-
-  it("should not be able to create a new user without 'tipo_cadastro'", async () => {
     await expect(
       createUser.execute({
         name: 'John Doe',
@@ -82,4 +40,5 @@ describe('CreateUser', () => {
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
+
 });
