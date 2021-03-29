@@ -15,12 +15,6 @@ export default function ensureAuthenticated(
   response: Response,
   next: NextFunction,
 ): void {
-// export default function ensureAuthenticated(
-//   request,
-//   response,
-//   next,
-// ) {
-  // Validação do token JWT
 
   const authHeader = request.headers.authorization;
 
@@ -34,11 +28,6 @@ export default function ensureAuthenticated(
     const decoded = verify(token, authConfig.jwt.secret);
 
     const { sub } = decoded as ITokenPayload;
-    // const { sub } = decoded;
-
-    // request.user = {
-    //   id: sub,
-    // };
 
     return next();
   } catch {

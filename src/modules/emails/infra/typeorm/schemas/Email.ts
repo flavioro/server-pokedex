@@ -2,14 +2,14 @@
 import {
   Entity,
   Column,
-  PrimaryGeneratedColumn,
+  ObjectIdColumn,
   CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
 class Email {
-  @PrimaryGeneratedColumn('uuid')
+  @ObjectIdColumn()
   id: string;
 
   @Column()
