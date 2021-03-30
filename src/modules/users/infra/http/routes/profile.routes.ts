@@ -20,7 +20,6 @@ profileRouter.put(
       old_password: Joi.string(),
       password: Joi.string(),
       password_confirmation: Joi.string().valid(Joi.ref('password')),
-      tipo_cadastro: Joi.string(),
     },
   }),
   profileController.update,
