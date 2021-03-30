@@ -1,7 +1,7 @@
 # server-pokedex
 NodeJs, Two Authenticate, Typescript, Typeorm, mongodb,
 
-Backend em  Node.js, Typescript, Express, Mongodb, Two Authenticator
+Backend em  Node.js, Typescript, Express, Mongodb, Two Factor Authenticator (2FA)
 
 ## Recursos<a name="features"></a>
 
@@ -10,6 +10,7 @@ Backend em  Node.js, Typescript, Express, Mongodb, Two Authenticator
 - Autenticação via name, username e password.
 - As senhas usam hash com [bcryptjs]
 - Usando [MongoDB](https://github.com/mongodb/mongo), [Mongoose](https://github.com/Automattic/mongoose) e [MongoLab(mLab)](https://mlab.com/) para armazenamento e consulta aos dados.
+- Implementação do google authenticator.
 
 ## Instalação<a name="installation"></a>
 
